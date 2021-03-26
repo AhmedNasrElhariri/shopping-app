@@ -89,12 +89,12 @@ app.use(flash());
 app.use("/admin", adminRoutes);
 app.use(shopRoutes);
 app.use(authRoutes);
-
+let port  = process.env.PORT || 8080;
 app.use(errorController.get404);
 mongoose
   .connect(MONGODB_URI, { useNewUrlParser: true , useUnifiedTopology: true })
   .then((result) => {
-    app.listen(3000);
+    app.listen(port);
   })
   .catch((err) => {
     console.log(err);
